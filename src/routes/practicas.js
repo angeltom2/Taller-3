@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router(); //manejador de rutas de express
 const practicasSchema = require("../models/practicas");
 const animalSchema = require("../models/practicas");
+const verifyToken = require('./validate_token');
 //Nuevo animal
 router.post("/practicas", (req, res) => {
     const practicas = practicasSchema(req.body);
@@ -11,7 +12,7 @@ router.post("/practicas", (req, res) => {
         .catch((error) => res.json({ message: error }));
 });
 //Consultar todos los animales
-router.get("/practicas", (req, res) => {
+router.get("/practicas", verifyToken, (req, res) => {
     practicasSchema.find()
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
