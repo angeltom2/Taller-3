@@ -12,7 +12,7 @@ const practicasSchema = mongoose.Schema({
     },
     tipo: {
         type: String,
-        enum: ['Tipo1', 'Tipo2', 'Tipo3'],
+        enum: ['Gestión de Proyectos y Requisitos', 'Desarrollo y Codificación', 'Pruebas y Optimización' , 'Seguridad y Documentación'],
         required: true
     },
     descripcion: {
@@ -24,14 +24,14 @@ const practicasSchema = mongoose.Schema({
         default: Date.now
     },
     lenguajesDeProgramacion: {
-        type: Boolean,
+        type: String,
         default: true
     },
     paradigmaUtilizado: {
         type: String,
-        ref: 'Usuario',
         required: true
     }
+
   
 });
 module.exports = mongoose.model("practicas", practicasSchema);
